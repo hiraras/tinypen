@@ -8,6 +8,7 @@ import componentLogo from '@/assets/images/logo/component.png'
 import chartLogo from '@/assets/images/logo/chart.png'
 import iconLogo from '@/assets/images/logo/icon.png'
 import utilLogo from '@/assets/images/logo/util.png'
+import githubLogo from '@/assets/images/logo/github.png'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import utilLogo from '@/assets/images/logo/util.png'
         <div class="body">
             <div class="icons">
                 <Icon title="博客" :icon="blogLogo" path="http://www.tinypen.cn/blog" />
+                <Icon title="github" :icon="githubLogo" path="https://github.com/hiraras" />
                 <Icon title="雅比亚头盔" :icon="bybLogo" path="http://www.bybhelmet.com" />
                 <Icon title="组件库" :icon="componentLogo" path="http://www.tinypen.cn/ljmp-antd" />
                 <Icon title="图表库" :icon="chartLogo" path="http://www.tinypen.cn/ljmp-chart" />
