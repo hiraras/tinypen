@@ -1,8 +1,9 @@
 <script setup>
+
 </script>
 
 <template>
-  <router-view></router-view>
+    <div class='search'></div>
 </template>
 
 <style scoped></style>
