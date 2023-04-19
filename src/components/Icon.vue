@@ -1,14 +1,27 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-const { icon, title, path } = defineProps<{
-    icon: string,
-    title: string,
-    path: string,
+
+const { src, title, path, type, children = [] } = defineProps<{
+    title: string;
+    src: string;
+    path?: string;
+    params?: Record<string, any>;
+    type: "soft" | "folder";
+    children?: []
 }>();
+
+const emit = defineEmits(['change'])
 
 const router = useRouter()
 
 const linkTo = () => {
+    if (type === 'folder') {
+        emit('change', children, title)
+        return;
+    }
+    if (!path) {
+        return;
+    }
     if (path.startsWith('http')) {
         window.open(path)
         return
@@ -19,7 +32,7 @@ const linkTo = () => {
 
 <template>
     <div class='icon' @click="linkTo">
-        <img :src="icon" class="img" />
+        <img :src="src" class="img" />
         <p class="title">{{ title }}</p>
     </div>
 </template>
