@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Footer from '@/components/Footer.vue'
 import Icon from '@/components/Icon.vue'
+import Page from '@/components/Page.vue'
 import { SOFTS } from '@/constant/home'
 import { ref } from 'vue'
 import type { Soft } from '@/constant/home'
@@ -23,37 +24,22 @@ const back = () => {
 </script>
 
 <template>
-    <div class="main">
-        <div class="body">
-            <div class="icons">
-                <Icon v-bind="item" v-for="item of currentSofts" :key="item.title" @change="changeSofts" />
-            </div>
-            <Footer />
+    <Page :class-name="$style.body">
+        <div class="icons">
+            <Icon v-for="item of currentSofts" v-bind="item" :key="item.title" @change="changeSofts" />
         </div>
+        <Footer />
         <img v-show="currentFolder" class="back-icon" @click="back" :src="backIcon" />
-        <img class="bg" src="@/assets/images/bg.jpeg" />
-    </div>
+    </Page>
 </template>
 
-<style scoped>
-.bg {
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 0;
-}
-
+<style module>
 .body {
-    position: relative;
-    z-index: 1;
     height: calc(100vh - 80px);
 }
+</style>
 
+<style scoped>
 .icons {
     display: grid;
     margin: 0 10%;

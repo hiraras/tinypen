@@ -7,6 +7,7 @@ import iconLogo from "@/assets/images/logo/icon.png";
 import utilLogo from "@/assets/images/logo/util.png";
 import githubLogo from "@/assets/images/logo/github.png";
 import folderLogo from "@/assets/images/logo/folder.png";
+import collectionLogo from "@/assets/images/logo/collection.png";
 
 export type Soft = {
   title: string;
@@ -34,6 +35,12 @@ const SOFTS: Soft[] = [
     title: "npm私人服务器",
     src: storeLogo,
     path: "http://www.tinypen.cn:4873",
+    type: "soft",
+  },
+  {
+    title: "我的收藏",
+    src: collectionLogo,
+    path: "/collection",
     type: "soft",
   },
   {
