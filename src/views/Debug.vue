@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { onMounted, onUnmounted, reactive, ref } from 'vue'
 import Page from '@/components/Page.vue'
 import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
@@ -38,7 +38,7 @@ const exec = () => {
         const fn = new Function('console', `${code.value}`)
         fn(console)
     } catch (error: any) {
-        outputList.push('Error:' + error.message)
+        outputList.push(`Error: ${error.message}\n${error.stack}`)
     }
 
     result.value = getResult()
@@ -49,23 +49,38 @@ const clear = () => {
     result.value = ''
 }
 
+const handle = (e: KeyboardEvent) => {
+    if (e.code === 'KeyR' && e.ctrlKey) {
+        e.preventDefault()
+        exec()
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('keydown', handle, false)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('keydown', handle)
+})
+
 </script>
 
 <template>
     <Page>
         <div class="debug">
             <div class="header">
-                <div @click="exec" class="function">运行</div>
+                <div @click="exec" class="function" title="使用 Ctrl + R 快速运行">运行</div>
                 <div @click="clear" class="function">清空</div>
             </div>
             <div class='main'>
                 <div class="code">
                     <codemirror v-model="code" placeholder="Code goes here..." :style="{ height: '80vh' }" :autofocus="true"
-                        :indent-with-tab="true" :tab-size="2" @change="change" :extensions="extensions" />
+                        :tab-size="2" @change="change" :extensions="extensions" />
                 </div>
                 <div class="result">
-                    <codemirror v-model="result" :style="{ height: '80vh' }" :autofocus="true" :indent-with-tab="true"
-                        :tab-size="2" @change="change" :extensions="extensions" />
+                    <codemirror v-model="result" :style="{ height: '80vh' }" :tab-size="2" @change="change"
+                        :extensions="extensions" />
                 </div>
             </div>
         </div>
