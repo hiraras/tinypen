@@ -8,6 +8,7 @@ import utilLogo from "@/assets/images/logo/util.png";
 import githubLogo from "@/assets/images/logo/github.png";
 import folderLogo from "@/assets/images/logo/folder.png";
 import collectionLogo from "@/assets/images/logo/collection.png";
+import debugLogo from "@/assets/images/logo/debug.png";
 
 export type Soft = {
   title: string;
@@ -41,6 +42,12 @@ const SOFTS: Soft[] = [
     title: "我的收藏",
     src: collectionLogo,
     path: "/collection",
+    type: "soft",
+  },
+  {
+    title: "调试",
+    src: debugLogo,
+    path: "/debug",
     type: "soft",
   },
   {
