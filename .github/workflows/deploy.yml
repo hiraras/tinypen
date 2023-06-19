@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - main # 这里的分支名称需要根据你的实际情况进行调整
+      - master # 这里的分支名称需要根据你的实际情况进行调整
 
 jobs:
   deploy:

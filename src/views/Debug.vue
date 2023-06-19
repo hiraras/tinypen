@@ -40,8 +40,9 @@ const exec = () => {
     } catch (error: any) {
         outputList.push(`Error: ${error.message}\n${error.stack}`)
     }
-
-    result.value = getResult()
+    setTimeout(() => {
+        result.value = getResult()
+    }, 0)
 }
 
 const clear = () => {
