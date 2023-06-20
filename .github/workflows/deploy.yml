@@ -32,8 +32,8 @@ jobs:
           key: ${{ secrets.SERVER_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd C:/nginx-1.16.1/html/test  # 替换为你服务器上的目标路径
-            scp -r dist/* .  # 替换为你的打包输出目录
+            cd C:/nginx-1.16.1/html/test
+            scp -r dist/* .
 
       - name: Deployment completed
         run: echo Deployment completed.
