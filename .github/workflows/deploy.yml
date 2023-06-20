@@ -25,7 +25,7 @@ jobs:
         run: yarn build # 替换为你的打包命令
 
       - name: Deploy to server
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
