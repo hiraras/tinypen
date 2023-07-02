@@ -32,7 +32,7 @@ jobs:
           key: ${{ secrets.SERVER_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /c/nginx-1.16.1/html/test
+            cd c:/nginx-1.16.1/html/test
             scp -r dist/* .
 
       - name: Deployment completed
