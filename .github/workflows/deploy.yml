@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Install dependencies
         run: yarn
@@ -32,7 +32,7 @@ jobs:
           key: ${{ secrets.SERVER_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd C:/nginx-1.16.1/html/test
+            cd /c/nginx-1.16.1/html/test
             scp -r dist/* .
 
       - name: Deployment completed
